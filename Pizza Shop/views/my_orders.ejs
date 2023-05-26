@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/recipt_paper.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+
+    <style>
+        form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+
+        form>* {
+            height: 1cm;
+        }
+
+        form input {
+            width: 80%;
+        }
+
+        form button {
+            width: 20%;
+            border: none;
+            border-radius: 20px;
+            margin: 5px;
+            color: white;
+            background-color: rgba(8, 39, 213, 0.644);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form action="#" method="get">
+        <input type="text" name="referenceId" placeholder="Enter reference number" required>
+        <button type="submit">Find</button>
+    </form>
+
+    <div class="recipt_container">
+        <div class="recipt">
+            <h1><%= locals.receiptTitle || 'My Order' %></h1>
+            <table>
+                <tbody>
+
+                    <tr>
+                        <td>Pizza Title & Size</td>
+                        <td><%= locals.pizzaNameSize || '----' %></td>
+                    </tr>
+                    <tr>
+                        <td>Amount</td>
+                        <td><%= locals.pizzaPrice || '----' %></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <a href="/">
+        <button class="back-to-home-btn">Back to Home</button>
+    </a>
+</body>
+
+</html>

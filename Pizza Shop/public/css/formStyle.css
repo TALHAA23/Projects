@@ -1,0 +1,123 @@
+body {
+  font-family: "Sora", sans-serif;
+  font-weight: 200;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+h1,
+h4 {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+}
+
+.order-sheet {
+  width: max(400px, 50%);
+  border: 1px solid 8f8585;
+  box-shadow: 1px 1px 6px 0px #8f8585;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-sheet * {
+  margin: 3px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+
+.serveMode {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form input[type=radio] {
+  display: none;
+}
+
+.serveMode label {
+  text-align: center;
+  width: 30%;
+  height: 1cm;
+  display: flex;
+  border: 2px solid rgba(10, 8, 175, 0.12);
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hightLighter {
+  position: absolute;
+  width: 30.5%;
+  height: 90%;
+  border-radius: 20px;
+  background-color: rgba(164, 8, 8, 0.797);
+  z-index: -1;
+  translate: 0;
+  transition: 0.5s ease-out;
+}
+
+form img {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.extras {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.pizza-size {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.pizza-size label {
+  text-align: center;
+  width: 30%;
+  height: 1cm;
+  display: flex;
+  border: 2px solid rgba(10, 8, 175, 0.12);
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-tag {
+  align-self: flex-end;
+}
+
+.price-tag input {
+  border: none;
+  width: 2cm;
+  font-weight: bold;
+  font-size: 30px;
+  color: green;
+  outline: none;
+}
+
+form button[type=submit] {
+  width: 90%;
+  background-color: rgba(10, 8, 175, 0.838);
+  height: 1cm;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: 0.3s ease-in;
+}
+
+form button[type=submit]:hover {
+  scale: 0.9;
+}/*# sourceMappingURL=formStyle.css.map */

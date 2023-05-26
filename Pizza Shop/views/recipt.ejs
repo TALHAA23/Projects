@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/recipt_paper.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipt</title>
+</head>
+
+<body>
+
+    <div class="recipt_container">
+        <small class="reference-number">Reference number: <b>32874</b></small>
+        <h4>Thank You for the order!</h4>
+        <h1><%= infoForUser %></h1>
+
+        <div class="recipt">
+            <table>
+                <thead>
+                    <tr>
+                        <th>item</th>
+                        <th>amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td> <%= pizzaName %> (<%= pizzaSize %>) </td>
+                    <td><%= Math.floor(1.1*pizzaPrice) %> incl Tax</td>
+                    <div class="topUps">
+                        <!--no need to warp in div but for clearity recommanded  -->
+                        <% if (topupArray) { %>
+
+                        <% if (typeof(topupArray)!='object') { %>
+                        <tr>
+                            <!-- not an array at this point -->
+                            <td><%= topupArray.split(',')[0] %> (topup)</td>
+                            <td><%= topupArray.split(',')[1] %> </td>
+                        </tr>
+                        <% } else { %>
+                        <% for( let index = 0; index < topupArray.length; index++ ) { %>
+                        <tr>
+                            <td><%= topupArray[index].split(',')[0] %> (topup)</td>
+                            <td><%= topupArray[index].split(',')[1] %> </td>
+                        </tr>
+                        <% } %>
+                        <% } %>
+
+                        <% } %>
+                    </div>
+                    <tr>
+                        <td>Service TAX</td>
+                        <td>0.70</td>
+                    </tr>
+                    <tr>
+                        <td>10% Government TAX</td>
+                        <td>1.1</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <span class="divider"></span>
+            <div class="total-amount">
+                <p>Total</p>
+                <p>$<%= totalAmount %></p>
+            </div>
+        </div>
+    </div>
+
+    <dialog open>
+        <form method="dialog">
+            <p>Order Saved, You can use referenceID for tracking anytime!</p>
+            <button type="submit">Got it</button>
+        </form>
+    </dialog>
+
+    <a href="/">
+        <button class="back-to-home-btn">Back to Home</button>
+    </a>
+
+    <script src="/js/receipt_script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency. Multer adds a `file` or `files` object to the request object, which contains the uploaded files. You can also access the text fields of the form in the `body` object.
+
+Multer has several methods and options to customize how it handles the file uploads. Some of the methods are:
+
+- `single(fieldname)`: Accepts a single file with the name `fieldname`. The single file will be stored in `req.file`.
+- `array(fieldname[, maxCount])`: Accepts an array of files, all with the name `fieldname`. Optionally error out if more than `maxCount` files are uploaded. The array of files will be stored in `req.files`.
+- `fields(fields)`: Accepts a mix of files, specified by `fields`. An object with arrays of files will be stored in `req.files`.
+- `none()`: Accepts only text fields. No files will be accepted. Only use this if you want to handle multipart forms as text fields.
+- `any()`: Accepts all files that comes over the wire. An array of files will be stored in `req.files`.
+
+Some of the options are:
+
+- `dest` or `storage`: Where to store the files
+- `fileFilter`: Function to control which files are accepted
+- `limits`: Limits of the uploaded data such as file size, number of files, etc.
+- `preservePath`: Keep the full path of files instead of just the base name
+
+For more details, you can refer to ¹ or ².
+
+Source: Conversation with Bing, 5/22/2023
+(1) multer - npm. https://www.npmjs.com/package/multer.
+(2) Express multer middleware. http://expressjs.com/en/resources/middleware/multer.html.
+(3) Subir archivos con Multer en Node.js y Express - Envato Tuts+. https://code.tutsplus.com/es/tutorials/file-upload-with-multer-in-node--cms-32088.
+(4) Multer in Node js - Scaler Topics. https://www.scaler.com/topics/nodejs/multer-in-node-js/.

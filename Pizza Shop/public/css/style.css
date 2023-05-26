@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@200;600;700&display=swap");
+body {
+  margin: 0;
+  font-family: "Sora", sans-serif;
+  font-weight: 200;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto 20vh;
+  grid-gap: 24px;
+}
+
+menu {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  background-color: cornflowerblue;
+}
+
+menu > * {
+  padding: 10px;
+}
+
+menu a {
+  text-decoration: none;
+  font-size: 3vh;
+  transition: 0.3s ease-in;
+}
+
+menu a:hover {
+  scale: 0.9;
+}
+
+.product-container {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  grid-gap: 24px;
+  margin: 0 1%;
+}
+
+.item {
+  border: 1px solid red;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 4px 3px rgba(149, 138, 138, 0.7294117647);
+  transition: 0.5s linear;
+}
+
+.item:hover {
+  box-shadow: 0px 0px 0px 0px rgba(149, 138, 138, 0.7294117647);
+  transform: translateY(-10px);
+}
+
+.item h1 {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+}
+
+.item > * {
+  width: 100%;
+}
+
+.item img {
+  aspect-ratio: 1/1;
+}
+
+.purchase-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(177, 176, 176, 0.75);
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+.item:hover .purchase-controls {
+  opacity: 1;
+}
+
+.purchase-controls form {
+  width: 100%;
+  display: contents;
+}
+
+.purchase-controls .add-to-chart-btn, .purchase-controls .read-desc-btn {
+  font-family: "Sora", sans-serif;
+  font-weight: 200;
+  border: 0;
+  height: 1cm;
+  border-radius: 20px;
+  margin: 5px;
+  transition: 0.3s ease-in;
+  width: 90%;
+  background-color: rgba(172, 8, 8, 0.882);
+  color: white;
+}
+
+.purchase-controls .read-desc-btn {
+  background-color: rgba(4, 35, 177, 0.882);
+}
+
+.description {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 0%;
+  bottom: 0;
+  background-color: rgba(172, 8, 8, 0.934);
+  border-radius: 10px;
+  transition: 0.5s linear;
+}
+
+.description p {
+  font-family: "Sora", sans-serif;
+  font-weight: 200;
+  margin: 4%;
+  color: white;
+  overflow-y: scroll;
+  max-height: 75%;
+}
+
+.description button {
+  font-family: "Sora", sans-serif;
+  font-weight: 200;
+  border: 0;
+  height: 1cm;
+  border-radius: 20px;
+  margin: 5px;
+  transition: 0.3s ease-in;
+}
+
+.price {
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+}
+
+.price sup {
+  color: red;
+}
+
+button:hover {
+  scale: 0.9;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.3568627451);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.6196078431);
+}/*# sourceMappingURL=style.css.map */

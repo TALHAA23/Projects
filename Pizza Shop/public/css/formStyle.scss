@@ -1,0 +1,129 @@
+@mixin choice-styler {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@mixin choice-lables {
+    text-align: center;
+    width: 30%;
+    height: 1cm;
+    display: flex;
+    border: 2px solid rgb(10 8 175 / 12%);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin title-style {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+}
+
+@mixin normal-text {
+    font-family: 'Sora', sans-serif;
+    font-weight: 200;
+}
+
+body {
+    @include normal-text;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+h1,
+h4 {
+    @include title-style;
+}
+
+.order-sheet {
+    width: max(400px, 50%);
+    border: 1px solid 8f8585;
+    box-shadow: 1px 1px 6px 0px #8f8585;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.order-sheet * {
+    margin: 3px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+.serveMode {
+    @include choice-styler;
+}
+
+form input[type='radio'] {
+    display: none;
+}
+
+.serveMode label {
+    @include choice-lables;
+}
+
+.hightLighter {
+    position: absolute;
+    width: 30.50%;
+    height: 90%;
+    border-radius: 20px;
+    background-color: rgba(164, 8, 8, 0.797);
+    z-index: -1;
+    translate: 0;
+    transition: .5s ease-out;
+}
+
+form img {
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+.extras {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.pizza-size {
+    @include choice-styler;
+}
+
+.pizza-size label {
+    @include choice-lables;
+}
+
+.price-tag {
+    align-self: flex-end;
+}
+
+.price-tag input {
+    border: none;
+    width: 2cm;
+    font-weight: bold;
+    font-size: 30px;
+    color: green;
+    outline: none;
+}
+
+form button[type='submit'] {
+    width: 90%;
+    background-color: rgba(10, 8, 175, 0.838);
+    height: 1cm;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    transition: .3s ease-in;
+}
+
+form button[type='submit']:hover {
+    scale: .9;
+}

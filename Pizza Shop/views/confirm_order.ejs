@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/formStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="order-sheet">
+        <h4>You are about to place order!</h4>
+        <h1><%= pizzaName %></h1>
+
+        <form action="/confirm-order/receipt" method="post">
+            <div class="serveMode">
+                <div class="hightLighter"></div>
+                <label>Dine-In
+                    <input type="radio" name="serveMode" value="dine-in">
+                </label>
+                <label>Delivery
+                    <input type="radio" name="serveMode" value="delivery">
+                </label>
+                <label>Take-Away
+                    <input type="radio" name="serveMode" value="take-away">
+                </label>
+            </div>
+
+            <img src="<%= imgSrc %>" alt="">
+
+            <div class="extras">
+                <label>Tomato $0
+                    <input type="checkbox" name="topUp" value="tomato,0">
+                </label>
+                <label>Garlic $0
+                    <input type="checkbox" name="topUp" value="garlic,0">
+                </label>
+                <label>Carrot $0.50
+                    <input type="checkbox" name="topUp" value="carrot,0.50">
+                </label>
+                <label>ketchup $2
+                    <input type="checkbox" name="topUp" value="ketchup,2">
+                </label>
+                <label>Suace $2
+                    <input type="checkbox" name="topUp" value="suace,2">
+                </label>
+            </div>
+
+            <div class="pizza-size">
+                <div class="hightLighter"></div>
+                <input type="hidden" name="pizzaTitle" value="<%= pizzaName %>">
+                <label>Small
+                    <input type="radio" name="pizzaSize" value="small">
+                </label>
+                <label>Medium
+                    <input type="radio" name="pizzaSize" value="medium">
+                </label>
+                <label>Large
+                    <input type="radio" name="pizzaSize" value="large">
+                </label>
+            </div>
+
+            <div class="price-tag">
+                Amount:<input type="text" name="price" value="<%= pizzaPrice %>" readonly>
+            </div>
+            <br>
+            <button type="submit">Place Order</button>
+
+        </form>
+    </div>
+
+    <script src="js/confirm_order_script.js"></script>
+
+</body>
+
+</html>
