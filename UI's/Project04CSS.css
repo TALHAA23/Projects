@@ -1,0 +1,297 @@
+*{
+  margin: 0;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "nav nav nav"
+  "Profile main side";
+
+  grid-template-columns: 1fr 2fr 0.6fr;
+  grid-template-rows: 0.2fr 3fr;
+}
+
+nav{
+  background-color: rgb(29, 113, 117);
+  grid-area: nav;
+  display: flex;
+  justify-content:space-around;
+  padding: 10px;
+  color: white;
+}
+nav i:hover{
+  opacity: .5;
+  color: black;
+}
+
+nav img{
+  width:40px ;
+  height:40px ;
+}
+
+.Profile{
+  background-color: white;
+  grid-area: Profile;
+}
+
+.profileBox img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 0;
+}
+
+.profileBox i{
+  padding: 10px 20px 5px 0;
+  color: rgb(29, 113, 117);
+}
+
+.Box{
+  width: 85%;
+  height: auto;
+  margin:10px;
+  padding: 10px;
+  box-shadow:inset 1px 1px 5px rgba(0, 0, 0, 0.5),
+  5px 5px 7px rgba(0, 0, 0, 0.5);
+
+  font-family: 'Ubuntu';
+  font-size: 1.2em;
+}
+
+.profileBox h2{
+  text-align: center;
+  padding: 5px;
+}
+.profileBox p{
+  padding: 7px;
+}
+
+.events{
+  width: 95%;
+  background-color: rgb(103, 128, 201);
+  color: white;
+  padding: 0;
+}
+
+.events p{
+    padding: 10px;
+}
+
+.events p:hover{
+  color: black;
+  background-color: rgb(167, 180, 217);
+}
+
+.events p:hover{
+  background-color: grey;
+}
+
+.Profile .Intrests{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  grid-row-gap: 5px;
+}
+
+.Intrests p{
+  padding: 5px;
+  background-color: lightgrey;
+}
+
+.Intrests p:nth-child(n):nth-child(-n+5){
+  background-color: rgb(72, 181, 147);
+}
+
+.Intrests p:nth-child(n+5):nth-child(-n+12){
+  background-color: rgb(130, 217, 189);
+}
+
+.Profile .Message{
+  padding: 10px;
+}
+.Message p{
+  padding: 10px;
+}
+
+.Message #MessageHeader{
+  width: 100%;
+  height: auto;
+}
+#MessageHeader i{
+  float: right;
+}
+
+#MessageHeader i:hover{
+  opacity: .4;
+}
+
+main{
+  background-color: white;
+  grid-area: main;
+}
+
+.MainBox{
+  width: 90%;
+  height: auto;
+  margin: 20px;
+  padding: 10px;
+  box-shadow:inset 1px 1px 5px rgba(0, 0, 0, 0.5),
+  5px 5px 7px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-family: 'Oxygen';
+  font-size: 1.1em;
+}
+
+main .MainBoxHead{
+
+}
+.MainBoxHead img{
+  width: auto;
+  border:0;
+}
+.MainBoxHead p{
+  float: right;
+  opacity: .3;
+  float:right;
+  padding: 10px;
+}
+
+.MianBoxBody p{
+  padding: 15px;
+}
+
+main .Posting{
+  display:flex;
+  flex-direction: column;
+  grid-row-gap: 10px;
+}
+
+.Posting input{
+  font-family: 'Heebo';
+  font-size: 1.1em;
+}
+
+main input[type="text"]{
+  height: 3em;
+  padding-left: 20px;
+}
+
+.MainButtons{
+  width: 30%;
+  height: 2em;
+  font-family: monospace;
+  border:none;
+  background-color: rgb(78, 158, 163);
+  color: white;
+  margin: 10px;
+  font-size: 1.11em;
+  font-family: 'Heebo';
+  font-weight: bolder;
+
+  box-shadow: 1px 1px rgb(110, 180, 184),
+  2px 2px rgb(110, 180, 184),
+  4px 4px rgb(110, 180, 184),
+  4px 4px rgb(110, 180, 184),
+  5px 5px rgb(110, 180, 184),
+  6px 6px rgb(110, 180, 184);
+
+  transition: .3s linear;
+
+}
+
+.MainButtons:hover{
+  box-shadow: 1px 1px rgb(110, 180, 184),
+  2px 2px rgb(110, 180, 184),
+  4px 4px rgb(110, 180, 184);
+  color: black;
+}
+
+.ImageFrame{
+  background-color: white;
+  width: 100%;
+  height:auto;
+  display: flex;
+  justify-content: space-around;
+  grid-gap: 0px;
+  overflow: hidden;
+}
+
+main img{
+  padding: 20px;
+  width: 100%;
+  height: auto;
+}
+
+
+aside{
+  background-color: white;
+  grid-area: side;
+}
+
+aside .asideBox{
+  text-align: center;
+}
+
+aside .asideButton{
+  width: 50%;
+  margin: 10px 0;
+}
+
+aside #AsideButtonContainer{
+  display: flex;
+}
+
+aside #AcceptButton{
+  background-color: green;
+  opacity: .4;
+}
+
+aside #AcceptButton:hover{
+  opacity: 1;
+}
+
+aside #DeniedButton{
+  background-color: red;
+  opacity: .4;
+}
+aside #DeniedButton:hover{
+  opacity: 1;
+}
+
+.content p{
+  padding: 10px;
+  font-family: 'Ubuntu';
+  font-size: 1.2em;
+}
+
+aside .AD{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+@media screen and (max-width:700px) {
+
+  body{
+    grid-template-areas:
+    "nav"
+    "Profile"
+    "main "
+    "side";
+    grid-template-columns: auto;
+    grid-template-rows: 0.2fr 1fr 2fr 0.5fr;
+  }
+
+  .ImageFrame{
+    flex-direction: column;
+  }
+
+  .Box{
+    width: 90%;
+  }
+
+
+}

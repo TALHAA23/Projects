@@ -1,0 +1,400 @@
+*{
+  margin: 0;
+}
+body{
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+  "nav"
+  "myweb"
+  "about"
+  "progress"
+  "progressFigure"
+  "PORTFOLIO"
+  "work"
+  "contact"
+  "footer";
+
+  grid-template-rows: 0.3fr 0.5fr 1fr 1fr 0.5fr 0.7fr 1fr 0.5fr 1fr;
+}
+
+nav{
+  background-color: white;
+  grid-area: nav;
+  display: flex;
+  justify-content:flex-start;
+  grid-column-gap: 30px;
+
+}
+nav div{
+  font-size: 25px;
+  font-family: 'Rajdhani';
+  transition: 0.5s linear;
+  padding: 10px;
+  font-weight: bolder;
+}
+nav div:hover{
+  color: gray;
+}
+nav input{
+  border:0;
+  width: 400px;
+  height: 100%;
+  float: right;
+  font-size: 15px;
+  margin-left: 7.5cm;
+  transition: 0.5s linear;
+  font-weight: bold;
+}
+nav input:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    outline: 0;
+}
+
+.myweb{
+  grid-area: myweb;
+  text-align: center;
+  padding: 70px;
+  background-image: url("Link/header.jpg");
+
+}
+.myweb div{
+  color: white;
+  font-size: 80px;
+  font-family: 'Viga';
+  font-weight: bolder;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about{
+  background-color: white;
+  grid-area: about;
+}
+
+.about h1{
+  font-family: 'Roboto';
+  font-size: 60px;
+  padding: 30px;
+  text-align: center;
+}
+
+.about h4{
+  font-family: 'Caveat';
+  font-size: 20px;
+  text-align: center;
+}
+
+.about p{
+  font-family: 'Comfortaa';
+  font-size: 20px;
+  padding: 20px 10cm 20px 10cm;
+}
+
+.about img{
+  width: 7cm;
+  height: 8cm;
+  padding-left: 10cm;
+  display: inline-block;
+}
+
+.progress{
+  background-color: white;
+  grid-area: progress;
+}
+
+.progress h3{
+  text-align: center;
+  font-family: 'Roboto';
+  padding: 50px 0;
+  letter-spacing: 3px;
+}
+
+.progress div{
+  letter-spacing: 4px;
+  padding-left: 50px;
+  font-size: 20px;
+  font-family: 'Acme';
+}
+
+.contain{
+  position: absolute;
+   left: 5cm;
+   width: 25cm;
+   height: 40px;
+   background-color: white;
+   text-align: center;
+   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.progress p{
+  padding: 10px;
+}
+
+.inside{
+  position: absolute;
+  left: -0.7cm;
+  width: 1px;
+  height: 100%;
+  background-color: skyblue;
+  transition: 1s linear;
+
+}
+
+.contain:hover .inside{
+  width: 80%;
+}
+
+/**/
+
+.contain1{
+  position: absolute;
+   left: 5cm;
+   width: 25cm;
+   height: 40px;
+   background-color: white;
+   text-align: center;
+   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.inside1{
+  position: absolute;
+  left: -0.7cm;
+  width: 1px;
+  height: 100%;
+  background-color: lightpink;
+  transition: 1s linear;
+
+}
+
+.contain1:hover .inside1{
+  width: 50%;
+}
+
+/**/
+
+.contain2{
+  position: absolute;
+   left: 5cm;
+   width: 25cm;
+   height: 40px;
+   background-color: white;
+   text-align: center;
+   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.inside2{
+  position: absolute;
+  left: -0.7cm;
+  width: 1px;
+  height: 100%;
+  background-color: lime;
+  transition: 1s linear;
+
+}
+
+.contain2:hover .inside2{
+  width: 75%;
+}
+
+.progressFigure{
+  background-color:grey;
+  grid-area: progressFigure;
+  display: flex;
+  justify-content:space-around;
+  grid-column-gap: 30px;
+  padding: 60px 25px;
+}
+
+.progressFigure div{
+
+  font-size: 40px;
+  font-family:'Staatliches';
+  font-weight: bold;
+
+}
+
+.PORTFOLIO{
+  background-color: white;
+  grid-area: PORTFOLIO;
+}
+
+.PORTFOLIO img{
+  width: 100%;
+}
+
+.PORTFOLIO div{
+  position: absolute;
+  left: 25%;
+  top:54cm;
+  font-size: 100px;
+  font-family: 'Viga';
+  color: white;
+  font-weight: bolder;
+  letter-spacing: 15px;
+  text-shadow: 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.work{
+  background-color: white;
+  grid-area: work;
+}
+
+.work h1{
+  font-size: 50px;
+  text-align: center;
+  font-family: 'Roboto';
+  padding-top: 20px;
+}
+
+.work p{
+  font-family: 'Comfortaa';
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.imgcontainer{
+  width: 75%;
+  height:500px;
+  background-color: white;
+  position: relative;
+  left: 3.5cm;
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.imgcontainer img{
+  margin: 20px;
+  opacity: 0.7;
+  transition: 0.5s linear;
+}
+
+.imgcontainer img:hover{
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.work input{
+  width: 150px;
+  height: 50px;
+  border: none;
+  background-color: rgb(244, 245, 235);
+  font-size: 20px;
+  font-family: 'Roboto';
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-left: 45%;
+  padding: 5px;
+  transition: 0.5s linear;
+  border-radius: 20px;
+}
+.work input:hover{
+  background-color: rgb(173, 173, 166)
+}
+
+.contact{
+  background-color: white;
+  grid-area: contact;
+}
+
+.contact img{
+  width: 99.99%;
+}
+.contact h1{
+  font-size: 70px;
+  font-family: 'Viga';
+  position: absolute;
+  left:35%;
+  top:90cm;
+  letter-spacing: 10px;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact h3{
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Roboto';
+  padding: 20px;
+}
+#Text_in_contact{
+  margin-left: 15.5cm;
+  font-size: 20px;
+  font-family: 'Caveat';
+}
+.cotactcontainer{
+  display: flex;
+  justify-content: center;
+}
+.cotactcontainer img{
+  width: 250px;
+  height: 150px;
+  margin: 15px;
+}
+
+.cotactcontainer p{
+  font-family: 'Cantarell';
+  font-size: 20px;
+  padding: 5px;
+}
+.cotactcontainer i{
+  padding-right: 15px;
+}
+
+
+.mailinfo input[type=text]{
+  margin-left: 15cm;
+  margin-right: 10px;
+}
+
+.mailinfo input{
+  width: 8cm;
+  height: 40px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+#message{
+  width: 16.5cm;
+}
+#Sendmessage{
+  float: right;
+  margin-right: 4cm;
+  width: 5cm;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  font-weight: 'Roboto';
+}
+
+#Sendmessage:hover{
+  background-color:rgb(209, 203, 203);
+  color: black;
+  letter-spacing: 3px;
+}
+
+footer{
+    background-color: gray;
+    grid-area: footer;
+    height:10cm;
+    margin-top: 5cm;
+}
+footer .icons{
+display: flex;
+justify-content: center;
+grid-column-gap: 20px;
+}
+footer i{
+  margin-top: 5cm;
+  transform: scale(2);
+  color: white;
+}
+footer p{
+  font-size: 20px;
+  font-family: 'Roboto';
+  text-align: center;
+  margin-top:1cm;
+  color: white;
+}
+footer:hover{
+  background-color: black;
+}

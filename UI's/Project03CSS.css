@@ -1,0 +1,243 @@
+*{
+  margin: 0;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "nav"
+  "Slideshow"
+  "menu"
+  "contact"
+  "footer";
+
+  grid-template-rows:0.5fr 1fr 2fr 1fr 0.7fr;
+}
+nav{
+  background-color: black;
+  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav a{
+  text-decoration: 0;
+  color: white;
+  font-size: 1em;
+  font-family: 'Comfortaa';
+  padding: 20px;
+  transition: font-size .3s linear;
+}
+nav a:hover{
+  font-size: 2em;
+}
+
+.Slideshow{
+  background-color: black;
+  grid-area: Slideshow;
+  display:flex;
+  justify-content: center;
+}
+
+.Slideshow .SlideshowContainer{
+  width: 60%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.SlideshowContainer p{
+  position: absolute;
+  left:30%;
+  top:45%;
+  font-size: 4em;
+  font-family: 'Catamaran';
+  color: rgb(	255 199 44);
+  font-weight: bolder;
+}
+
+.SlideshowContainer img{
+  width: 100%;
+  height: auto;
+  animation: slide 30s 3 ease-in-out;
+  border-radius:20px 20px;
+}
+
+@keyframes slide {
+
+  0%{transform: translateX(0%);}
+  10%{transform: translateX(0%);}
+  20%{transform: translateX(-100%);}
+  30%{transform: translateX(-100%);}
+  40%{transform: translateX(-200%);}
+  50%{transform: translateX(-200%);}
+  60%{transform: translateX(-300%);}
+  70%{transform: translateX(-300%);}
+  80%{transform: translateX(-400%);}
+  90%{transform: translateX(-400%);}
+  100%{transform: translateX(0%);}
+
+}
+
+menu{
+  background-color: black;
+  grid-area: menu;
+  padding: 20px;
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+.menuImg{
+  width: 50%;
+  height: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-repeat: no-repeat;
+  margin-top: 10px;
+}
+.menuImg:hover p{
+  opacity: .5;
+  color: white;
+}
+.menuImg p{
+  color: rgb(	255 199 44);
+  font-size: 4.5em;
+  font-weight: bolder;
+  font-family: 'Catamaran';
+  font-weight: bolder;
+  text-transform: uppercase;
+  transition: .5s linear;
+}
+
+.menuImg:nth-child(5){
+  width: 100%;
+}
+
+.Burger{
+  background-image: url("Link/Burger2.jpg");
+}
+
+.MilkShake{
+  background-image: url("Link/MilkShake.jpg");
+}
+
+.IceCream{
+  background-image: url("Link/icecream.jpg");
+}
+
+.Sandwich{
+  background-image: url("Link/Sandwich.jpg");
+}
+
+.coldDrink{
+  background-image: url("Link/ColdDrinks.jpg");
+  background-size:cover;
+}
+
+.coffee{
+  background-image: url("Link/Coffee.jpg");
+}
+
+.fires{
+  background-image: url("Link/Fries.jpg");
+}
+
+
+
+.contact{
+  background-color: black;
+  grid-area: contact;
+  display: flex;
+  justify-content: center;
+}
+.contact .FooterMenu{
+  padding: 20px;
+  font-size: 1em;
+  font-family: 'Comfortaa';
+  color: white;
+}
+
+.FooterMenu p{
+  padding: 10px;
+  text-transform: capitalize;
+}
+.FooterMenu h3{
+  padding: 20px;
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+footer{
+  background-color: black;
+  grid-area: footer;
+  padding: 20px;
+}
+footer .icons{
+  display: flex;
+  color: white;
+}
+
+.icons p{
+  font: 1.5em 'Comfortaa';
+  padding: 5px;
+  color: white;
+}
+
+.icons i{
+  padding: 3px;
+}
+
+footer .lines{
+  display: flex;
+  margin-top: 40px;
+}
+
+.lines p{
+  font:bolder 1em 'Comfortaa';
+  color: white;
+  padding: 7px;
+  border-right: 2px solid white;
+  text-transform: uppercase;
+}
+
+footer .apps{
+  display: flex;
+  float: right;
+  color: white;
+}
+
+.apps p{
+  color: white;
+  font:bolder 1em 'Comfortaa';
+  padding:10px;
+}
+.apps i{
+  padding-left: 5px;
+}
+
+.copyright{
+  color: white;
+  font:bolder 1em 'Comfortaa';
+  padding:10px;
+  display: flex;
+  float: right;
+}
+
+@media only screen and (max-width:700px) {
+
+  menu , .contact , nav{
+    flex-direction: column;
+  }
+  .menuImg{
+    width: 100%;
+  }
+  .SlideshowContainer p{
+    top:75%;
+    font-size: 1.5em;
+}
+
+}

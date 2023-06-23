@@ -1,0 +1,473 @@
+*{
+  margin: 0;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "nav Dashboard"
+  "nav feed"
+  "nav stats"
+  "nav table"
+  "nav users"
+  "nav comments"
+  "nav plans"
+  "nav footer";
+
+  grid-template-columns: 0.6fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+nav{
+  background-color: rgb(206, 207, 196);
+  grid-area: nav;
+  position: fixed;
+  width: 8.35cm;
+  height: 100%;
+}
+
+nav a{
+  display:block;
+  text-decoration: 0;
+  color: black;
+  font-family: monospace;
+  font-size: 19px;
+  padding: 10px 10px 10px 20px;
+  font-family: 'Barlow';
+}
+
+nav a:hover{
+  background-color: rgb(193, 194, 190);
+}
+
+nav img{
+  padding-left: 10px;
+}
+nav p{
+  font-size: 20px;
+  padding: 20px;
+  font-family: 'Barlow';
+}
+
+nav  h1{
+  font-family:'Rubik';
+  padding: 0 0 10px 20px;
+}
+#icons{
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+.Dashboard{
+  background-color: rgb(237, 235, 235);
+  grid-area: Dashboard;
+  padding: 20px;
+}
+
+.infoContainers{
+  display: flex;
+  justify-content:space-around;
+}
+
+.Dashboard p{
+  font-family: 'Rubik';
+  font-size: 30px;
+  padding-left: 20px;
+}
+.infoContainers i{
+  padding: 20px;
+}
+
+#Box1{
+  width: 240px;
+  height: 150px;
+  background-color: rgb(168, 70, 59);
+  margin: 20px 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+#Box1 h2{
+  float: right;
+  font-size: 30px;
+  padding: 30px 20px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box1 p{
+  float: bottom;
+  font-size: 25px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box2{
+  width: 240px;
+  height: 150px;
+  background-color: rgb(49, 114, 163);
+  margin: 20px 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+#Box2 h2{
+  float: right;
+  font-size: 30px;
+  padding: 30px 20px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box2 p{
+  float: bottom;
+  font-size: 25px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box3{
+  width: 240px;
+  height: 150px;
+  background-color: rgb(65, 156, 80);
+  margin: 20px 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+#Box3 h2{
+  float: right;
+  font-size: 30px;
+  padding: 30px 20px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box3 p{
+  float: bottom;
+  font-size: 25px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box4{
+  width: 240px;
+  height: 150px;
+  background-color: rgb(227, 219, 109);
+  margin: 20px 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+#Box4 h2{
+  float: right;
+  font-size: 30px;
+  padding: 30px 20px;
+  font-family: 'Saira';
+  color: white;
+}
+#Box4 p{
+  float: bottom;
+  font-size: 25px;
+  font-family: 'Saira';
+  color: white;
+}
+
+
+.feed{
+  background-color: rgb(237, 235, 235);
+  grid-area: feed;
+  display: flex;
+  justify-content:space-around;
+}
+
+.feed #regionImg{
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+  float: left;
+}
+table{
+  padding: 10px;
+  border-collapse: collapse;
+  margin: 10px;
+}
+
+th{
+  font-family: 'Roboto';
+  float: left;
+}
+#FeedTable tr:nth-child(odd){
+  background-color: rgb(230, 237, 232);
+}
+
+#FeedTable td{
+  padding: 5px 60px;
+  font-family: 'Saira';
+}
+
+.stats{
+  background-color: rgb(237, 235, 235);
+  grid-area: stats;
+  padding: 50px 10px;;
+}
+
+/*New Visitor*/
+.NewVisitor p{
+  font-size: 20px;
+  font-family: 'Saira';
+  margin: 15px 15px 15px 10px;
+}
+
+.frameVistor{
+  width: 90%;
+  height: 30px;
+  background-color: rgb(209, 208, 201);
+  margin: 0 20px 0 70px;
+}
+.frameVistor .progressVistor{
+  width: 25%;
+  height: 30px;
+  background-color: rgb(230, 113, 78);
+  text-align: center;
+}
+.progressVistor p{
+  padding: 5px 0;
+  color: white;
+  font-size: 15px;
+}
+
+/*New Users*/
+
+.NewUsers p{
+  font-size: 20px;
+  font-family: 'Saira';
+  margin: 15px 15px 15px 10px;
+}
+
+.frameUsers{
+  width: 90%;
+  height: 30px;
+  background-color: rgb(209, 208, 201);
+  margin: 0 20px 0 70px;
+}
+.frameUsers .progressUsers{
+  width: 50%;
+  height: 30px;
+  background-color: rgb(62, 194, 150);
+  text-align: center;
+}
+.progressUsers p{
+  padding: 5px 0;
+  color: white;
+  font-size: 15px;
+}
+
+/*Bounce Rate*/
+
+.BounceRate p{
+  font-size: 20px;
+  font-family: 'Saira';
+  margin: 15px 15px 15px 10px;
+}
+
+.frameBounceRate{
+  width: 90%;
+  height: 30px;
+  background-color: rgb(209, 208, 201);
+  margin: 0 20px 0 70px;
+}
+.frameBounceRate .progressBounceRate{
+  width: 75%;
+  height: 30px;
+  background-color: rgb(30, 132, 150);
+  text-align: center;
+}
+.progressBounceRate p{
+  padding: 5px 0;
+  color: white;
+  font-size: 15px;
+}
+
+
+.table{
+  background-color: rgb(237, 235, 235);
+  grid-area: table;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+#CountriesTable{
+  width: 95%;
+}
+
+#CountriesTable th{
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 7px;
+}
+
+#CountriesTable tr{
+  border: 0.5px solid rgb(240, 242, 245);
+}
+
+#CountriesTable td{
+  padding: 10px;
+  font-size: 15px;
+  font-family: 'Saira';
+}
+#CountriesTable tr:nth-child(even){
+  background-color: rgb(230, 234, 240);
+}
+#CountriesTable tr:hover{
+  background-color: rgb(196, 199, 204);
+}
+
+.table input{
+  width: 200px;
+  height: 40px;
+  background-color: red;
+  color: white;
+  border:0;
+  font-size: 15px;
+  font-family: 'Saira';
+}
+.table input:hover{
+  background-color: green;
+}
+
+.users{
+  background-color: rgb(237, 235, 235);
+  grid-area: users;
+  padding: 20px;
+}
+.users p{
+  font-size: 20px;
+  font-family: 'Saira';
+  font-weight: lighter;
+  margin-left: 15px;
+}
+
+#UserList{
+  list-style: none;
+  padding: 10px;
+  width: 95%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+
+}
+
+#UserList li{
+    height: 20px;
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Saira';
+}
+
+.comments{
+  background-color: rgb(237, 235, 235);
+  grid-area: comments;
+  padding: 20px;
+}
+.comments p{
+  font-size: 20px;
+  font-family: 'Saira';
+  padding-left: 20px;
+}
+
+#Commentslist li{
+  display: flex;
+  padding: 20px;
+}
+
+#Commentslist h1{
+  font-size: 20px;
+  padding-left: 10px;
+  font-family: 'Saira';
+}
+#Commentslist i{
+  font-size: 15px;
+  color: rgb(201, 195, 195);
+}
+
+#Commentslist p{
+  font-size: 18px;
+  padding: 15px 30px 10px 20px;
+  font-family: 'Saira';
+  font-weight: lighter;
+}
+#Commentslist img{
+  padding: 20px;
+}
+
+.plans{
+  background-color: rgb(184, 186, 173);
+  grid-area: plans;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+/*Demographic*/
+#Demographic{
+  width: 33.33%;
+  padding: 12px;
+}
+
+#Demographic h1{
+  font-size: 20px;
+  font-family: 'Rubik';
+  border-bottom: 5px solid green;
+  padding: 5px;
+}
+#Demographic p{
+  font-size: 18px;
+  font-family: 'Saira';
+  padding: 7px;
+}
+/*System Box*/
+
+#System{
+  width: 33.33%;
+  padding: 12px;
+}
+
+#System h1{
+  font-size: 20px;
+  font-family: 'Rubik';
+  border-bottom: 5px solid red;
+  padding: 5px;
+}
+#System p{
+  font-size: 18px;
+  font-family: 'Saira';
+  padding: 7px;
+}
+
+/*Target*/
+#Target{
+  width: 33.33%;
+  padding: 12px;
+}
+
+#Target h1{
+  font-size: 20px;
+  font-family: 'Rubik';
+  border-bottom: 5px solid Yellow;
+  padding: 5px;
+}
+#Target p{
+  font-size: 18px;
+  font-family: 'Saira';
+  padding: 7px;
+}
+
+footer{
+  background-color: white;
+  grid-area: footer;
+  padding: 25px;
+}
+footer h1{
+  font-size: 20px;
+  font-family: 'Roboto';
+  font-weight: lighter;
+}
+
+footer p{
+  font-size: 15px;
+  font-family: 'Roboto';
+}
+footer a{
+  color: black;
+}
