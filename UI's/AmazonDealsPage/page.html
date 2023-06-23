@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <script src="https://kit.fontawesome.com/af163de743.js" crossorigin="anonymous"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo|Roboto|Saira|Barlow|Dosis">
+  <!-- <link rel="stylesheet" href="challange.css"> -->
+  <style media="screen">
+    * {
+      margin: 0;
+      font-family: 'Roboto';
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 15% 20% 10% auto 10% auto;
+    }
+
+    /* Navigation */
+    body nav {
+      grid-column: 1/-1;
+      grid-row: 1/2;
+      background-color: yellow;
+    }
+
+    nav .topView {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #131921;
+      color: white;
+      font-size: .8em;
+    }
+
+    nav .topView .dailogeBox1 {
+      position: relative;
+    }
+
+    nav .topView .dailogeBox1 div {
+      position: absolute;
+      width: 3cm;
+      border-radius: 10px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      /* height: 3cm; */
+      background: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      z-index: 3;
+    }
+
+    nav .topView .dailogeBox1 div>* {
+      padding: 10px;
+    }
+
+    nav .btmView {
+      width: 100%;
+      height: 40%;
+      background: #232f3e;
+      color: white;
+      display: flex;
+      align-items: center;
+    }
+
+    nav .btmView>* {
+      margin: 1%;
+      padding: 1px;
+    }
+
+    nav .btmView .button {
+      width: 1.5cm;
+      height: 1cm;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav .btmView .button div div {
+      width: 21px;
+      height: 4px;
+      background-color: white;
+      margin: 2px;
+    }
+
+    /* Navigation */
+    /* slider */
+    body>section {
+      grid-column: 1/-1;
+      grid-row: 2/3;
+      background-color: #eaeded;
+      position: relative;
+    }
+
+    body>section>div {
+      width: 90%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      grid-gap: 25px;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      flex-direction: row;
+      margin: 0 10%;
+    }
+
+    body section>div span {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body section>div::-webkit-scrollbar {
+      display: none;
+    }
+
+    body section>div img {
+      width: 2cm;
+      height: 2cm;
+      border-radius: 50%;
+    }
+
+    body section button {
+      position: absolute;
+      margin: 1cm;
+      top: 15%;
+    }
+
+    /* slider */
+    /* Sorting */
+    .sorting {
+      grid-column: 1/-1;
+      grid-row: 3/4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px;
+    }
+
+    /* Sorting */
+    /* products & Filters */
+    body main {
+      grid-column: 1/-1;
+      grid-row: 4/5;
+      display: flex;
+      border: 1px solid #d5dbdb;
+    }
+
+    main aside {
+      height: 100%;
+      width: 20%;
+    }
+
+    aside>* {
+      padding: 10px 0 0 15px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    main aside section>label {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 10% 80%;
+      grid-gap: 5px;
+    }
+
+    body main aside>div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    body aside a {
+      text-decoration: none;
+    }
+
+    body main .productsShowCase {
+      width: 80%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-rows: repeat(auto-fit, minmax(400px, 400px));
+    }
+
+    body main .productsShowCase>div {
+      border: 1px solid #d5dbdb;
+      padding: 5%;
+    }
+
+    body main .productsShowCase>div>* {
+      margin: 5px;
+    }
+
+    body main .productsShowCase>div img {
+      height: 70%;
+      width: 100%;
+    }
+
+    body main .productsShowCase div img+p {
+      color: white;
+      height: 7%;
+      padding: 4px;
+      border-radius: 3px;
+      background-color: #cc0c39;
+    }
+
+    body .buttonNavigation {
+      grid-column: 1/-1;
+      grid-row: 5/6;
+      background: #eaeded;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-gap: 10px;
+    }
+
+    body .buttonNavigation button {
+      height: 70%;
+      width: 1cm;
+      border-radius: 10px;
+      border: 0;
+      background: #edfdff;
+    }
+
+    /* products & Filters */
+    footer {
+      grid-column: 1/-1;
+      grid-row: 6/7;
+      display: flex;
+      flex-direction: column;
+      /* height: 100cm; */
+    }
+
+    footer>div {
+      width: 100%;
+      display: flex;
+      padding: 3% 0;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    footer div button {
+      width: 8cm;
+      height: 1cm;
+      border: 0;
+      border-radius: 5px;
+      font-weight: bold;
+      background-image: linear-gradient(#ffce52, #FFC226);
+    }
+
+    footer>button {
+      height: 1.7cm;
+      background: #37475a;
+      color: white;
+    }
+
+    footer>section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #232f3e;
+      color: white;
+      grid-gap: 4%;
+      width: 100%;
+      /* padding-top: 30%; */
+      padding: 10% 0;
+    }
+
+    footer section div>* {
+      margin: 8px;
+    }
+
+    @media screen and (max-width:900px) {
+      footer section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="topView">
+
+      <i class="fa-brands fa-amazon fa-3x"></i>
+
+      <div class="middleBoxBtn">
+        <i class="fa-solid fa-location-dot"></i>
+        <p>Deliver to Pakistan</p>
+      </div>
+
+      <div style="min-width:50%;margin:0">
+        <select class="search-text-input">
+          <option>All</option>
+          <option>Arts & Craft</option>
+          <option>Automotive</option>
+          <option>Bady</option>
+          <option>Movies</option>
+          <option>Beauty Apperance</option>
+          <option>Clothes & Jackets</option>
+        </select>
+        <input style="width:50%" type="search" class="search-text-input">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+
+
+      <p class="dailogeBox1">Language
+        <div></div>
+      </p>
+
+      <div class="dailogeBox">
+        <p>Hello Sign In</p>
+        <p><b> Accounts & Lists</b></p>
+      </div>
+      <!-- <input type="radio" name="" value=""> -->
+      <label for=""></label>
+      <div>
+        <p>Return</p>
+        <p><b> & Orders</b></p>
+      </div>
+
+      <p><i class="fa-solid fa-cart-shopping fa-2x"></i>Chart</p>
+
+    </div>
+
+    <div class="btmView">
+
+      <div class="button">
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p>All</p>
+      </div>
+
+      <p>Today Deals</p>
+      <p>Customer Service</p>
+      <p>Registry</p>
+      <p>Gift Card</p>
+      <p>Sell</p>
+      <p style="margin-left:auto">Shop great deals now</p>
+    </div>
+  </nav>
+
+  <section>
+    <div>
+    </div>
+    <button>prev</button>
+    <button style="right:0">next</button>
+  </section>
+
+  <div class="sorting">
+    <h1>TODAYS DEALS</h1>
+    <select>
+      <option>Add sortBy</option>
+      <option>Featured</option>
+      <option>Discount: Low to High</option>
+      <option>Discount: High to Low</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
+  </div>
+
+  <main>
+    <aside>
+    </aside>
+    <div class="productsShowCase">
+
+    </div>
+  </main>
+
+  <div class="buttonNavigation"></div>
+
+  <footer>
+    <div>
+      <p>See personalized recommendations</p>
+      <button>Sign In</button>
+      <span style="display:flex; font-size:10px;">
+        <p>New customer?</p>
+        <a href="#">Start Here</a>
+      </span>
+    </div>
+    <button>Back To Top</button>
+    <section class="footerContent">
+
+    </section>
+  </footer>
+
+
+  <script>
+    // topSlider
+
+    const SLIDERFRAME = document.querySelector('section div') //sliderImg
+    const buttons = document.querySelectorAll('section button')
+    const TOPSLIDER = function () {
+      buttons[0].addEventListener('click', () => targetSliderButton("+"))
+      buttons[1].addEventListener('click', () => targetSliderButton("-"))
+
+      function targetSliderButton(e) {
+        console.log(SLIDERFRAME.scrollLeft)
+        const detect = 100;
+        e == "+" ? SLIDERFRAME.scrollLeft -= window.innerWidth - detect : SLIDERFRAME.scrollLeft += window
+          .innerWidth - detect;
+      }
+    }
+    TOPSLIDER();
+    // topSlider
+
+    const PRODUCTS = [{
+      id: 1,
+      catagory: 'makeup',
+      discount: 85,
+      price: 100,
+      availablilty: 'available',
+      department: 'Fashion',
+      img: 'https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    }, {
+      id: 2,
+      catagory: 'clothes',
+      discount: 20,
+      price: 300,
+      availablilty: 'available',
+      department: 'Wears',
+      img: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 3,
+      catagory: 'clothes',
+      discount: 50,
+      price: 500,
+      availablilty: 'upcoming',
+      department: 'Wears',
+      img: 'https://images.pexels.com/photos/86757/substances-colorful-color-pattern-86757.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 4,
+      catagory: 'earrings',
+      discount: 10,
+      price: 90,
+      availablilty: 'watchlist',
+      department: 'Jewellary',
+      img: 'https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 5,
+      catagory: 'Makeup',
+      discount: 159,
+      price: 33,
+      availablilty: 'Available',
+      department: 'Fashion',
+      img: 'https://images.pexels.com/photos/90297/pexels-photo-90297.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 6,
+      catagory: 'fast food',
+      discount: 1,
+      price: 10,
+      availablilty: 'Available',
+      department: 'Food',
+      img: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 7,
+      catagory: 'drinks',
+      discount: 0,
+      price: 5,
+      availablilty: 'Available',
+      department: 'drinks',
+      img: 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 8,
+      catagory: 'makeup',
+      discount: 80,
+      price: 139,
+      availablilty: 'upcoming',
+      department: 'Fashion',
+      img: 'https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    }, {
+      id: 9,
+      catagory: 'natural Food',
+      discount: 0,
+      price: 5,
+      availablilty: 'Available',
+      department: 'Food',
+      img: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 10,
+      catagory: 'dress',
+      discount: 20,
+      price: 999,
+      availablilty: 'watchlist',
+      department: 'Wear',
+      img: 'https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 11,
+      catagory: 'health',
+      discount: 70,
+      price: 100,
+      availablilty: 'Available',
+      department: 'Gym',
+      img: 'https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 12,
+      catagory: 'sweets',
+      discount: 5,
+      price: 15,
+      availablilty: 'Available',
+      department: 'Food',
+      img: 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 13,
+      catagory: 'laptop',
+      discount: 28,
+      price: 1599,
+      availablilty: 'upcoming',
+      department: 'Tech',
+      img: 'https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 14,
+      catagory: 'laptop',
+      discount: 30,
+      price: 2999,
+      availablilty: 'Available',
+      department: 'Tech',
+      img: 'https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 15,
+      catagory: 'Subsribtions',
+      discount: 11,
+      price: 299,
+      availablilty: 'Available',
+      department: 'Entertaiment',
+      img: 'https://images.pexels.com/photos/65128/pexels-photo-65128.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 16,
+      catagory: 'laptop',
+      discount: 70,
+      price: 1099,
+      availablilty: 'watchlist',
+      department: 'Tech',
+      img: 'https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 17,
+      catagory: 'gaming',
+      discount: 10,
+      price: 50,
+      availablilty: 'Available',
+      department: 'Entertaiment',
+      img: 'https://images.pexels.com/photos/2752777/pexels-photo-2752777.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 18,
+      catagory: 'Subsribtions',
+      discount: 12,
+      price: 299,
+      availablilty: 'available',
+      department: 'Entertaiment',
+      img: 'https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 19,
+      catagory: 'fruits',
+      discount: 0,
+      price: 25,
+      availablilty: 'available',
+      department: 'Food',
+      img: 'https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 20,
+      catagory: 'gaming',
+      discount: 10,
+      price: 30,
+      availablilty: 'available',
+      department: 'Food',
+      img: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 21,
+      catagory: 'health',
+      discount: 85,
+      price: 100,
+      availablilty: 'watchlist',
+      department: 'Gym',
+      img: 'https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 22,
+      catagory: 'laptop',
+      discount: 50,
+      price: 1799,
+      availablilty: 'upcoming',
+      department: 'Tech',
+      img: 'https://images.pexels.com/photos/3201768/pexels-photo-3201768.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 23,
+      catagory: 'decoration',
+      discount: 90,
+      price: 11,
+      availablilty: 'upcoming',
+      department: 'Home',
+      img: 'https://images.pexels.com/photos/447592/pexels-photo-447592.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 24,
+      catagory: 'watch',
+      discount: 19,
+      price: 899,
+      availablilty: 'available',
+      department: 'Wear',
+      img: 'https://images.pexels.com/photos/10557897/pexels-photo-10557897.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, {
+      id: 25,
+      catagory: 'Home',
+      discount: 86,
+      price: 199,
+      availablilty: 'Available',
+      department: 'Home',
+      img: 'https://images.pexels.com/photos/447592/pexels-photo-447592.jpeg?auto=compress&cs=tinysrgb&w=600',
+    }, ]
+
+    const AVAILABLE_FILTER = PRODUCTS.filter(item => {
+      return item.availablilty == 'Available';
+    })
+    const UPCOMING_FILTER = PRODUCTS.filter(item => {
+      return item.availablilty == 'upcoming';
+    })
+    const WATCHLIST_FILTER = PRODUCTS.filter(item => {
+      return item.availablilty == 'watchlist';
+    })
+
+    const productFrame = document.querySelector('.productsShowCase')
+
+    //buttonNavigation
+    const buttonNavigation = document.querySelector('.buttonNavigation');
+
+    function APPENDPRODUCTS(list = PRODUCTS) {
+      buttonNavigation.innerHTML = ''
+      for (let i = 1; i <= Math.ceil(list.length / 10); i++) {
+        let btn = document.createElement('button');
+        buttonNavigation.append(btn);
+        btn.innerHTML = i;
+      }
+      const pagesNavigationButton = buttonNavigation.querySelectorAll('button')
+      pagesNavigationButton.forEach(pageEachBtn => {
+        let start;
+        pageEachBtn.onclick = () => {
+          start = parseInt(pageEachBtn.innerHTML + 1) - 11;
+          appendProducts(list, start)
+          return;
+        }
+        appendProducts(list, start)
+      })
+    }
+    APPENDPRODUCTS()
+    //buttonNavigation
+
+    function appendProducts(list = PRODUCTS, start = 0) {
+      productFrame.innerHTML = '';
+      // console.log(list.length)
+      let end;
+      list.length <= 10 ? end = list.length : end = start + 10;
+      for (let i = start; i < end; i++) {
+        let div = document.createElement('div');
+        productFrame.append(div);
+        let img = document.createElement('img');
+        let discount = document.createElement('p')
+        let disc = document.createElement('p')
+
+        div.append(img)
+        div.append(discount)
+        div.append(disc)
+        img.alt = 'Failed to Load image :-['
+        img.src = list[i].img;
+        discount.innerHTML = `Up to ${list[i].discount}% off`;
+        disc.innerHTML =
+          `${list[i].price}$, This is the product with luram per sj shfjsdh huehfds  hdhaseuil aramae sio sedfoise`;
+      }
+    }
+
+    //aside
+    //slider Content
+
+    const DEPARTMENTS = new Set([]);
+    for (let item of PRODUCTS) {
+      DEPARTMENTS.add(item.department);
+    }
+
+    function sliderImg() {
+      for (let eachdepartment of DEPARTMENTS) {
+        let frame = document.createElement('span');
+        SLIDERFRAME.append(frame);
+
+        let imgTag = document.createElement('img');
+        let headingTag = document.createElement('h5')
+        frame.append(imgTag);
+        frame.append(headingTag)
+        headingTag.innerHTML = eachdepartment
+
+
+        for (let eachProduct of PRODUCTS) {
+          if (eachProduct.department == eachdepartment) {
+            imgTag.src = eachProduct.img;
+            break;
+          }
+        }
+      }
+    }
+
+    sliderImg()
+    //slider Content
+
+    //slider Filtering
+    const sliderContent = SLIDERFRAME.querySelectorAll('span');
+
+    sliderContent.forEach((eachdepartment) => {
+      eachdepartment.onclick = () => filterBySlider();
+    })
+
+    function filterBySlider() {
+      let currentDepartment = event.currentTarget.lastElementChild.innerHTML;
+      const DEPARTMENT_SLIDER_FILTER = PRODUCTS.filter(item => {
+        if (item.department == currentDepartment)
+          return item;
+      })
+      APPENDPRODUCTS(DEPARTMENT_SLIDER_FILTER)
+    }
+    //slider Filtering
+
+    const SIDEFILTER = document.querySelector('main aside');
+
+    function sideFilterContent(parent, item) {
+      let a = document.createElement('a')
+      parent.append(a);
+      a.innerHTML = item;
+    }
+    //aside content generator
+    function* generateSideFilter(...args) {
+      let deals = document.createElement('div');
+      let h3 = document.createElement('h3');
+      SIDEFILTER.append(deals)
+      deals.append(h3)
+      h3.innerHTML = "DEALS"
+
+      for (let item of arguments[0]) {
+        sideFilterContent(deals, item)
+      }
+      yield 1;
+
+      let departments = document.createElement('section');
+      SIDEFILTER.append(departments);
+      h3 = document.createElement('h3');
+      departments.append(h3);
+      h3.innerHTML = "Departments";
+      for (let item of arguments[1]) {
+        let label = document.createElement('label');
+        departments.append(label);
+        label.for = item
+
+        let input = document.createElement('input');
+        let p = document.createElement('p');
+        input.type = 'checkbox';
+
+        label.append(input);
+        label.append(p);
+        p.innerHTML = item;
+      }
+      yield 2;
+
+      let prices = document.createElement('div');
+      h3 = document.createElement('h3');
+      SIDEFILTER.append(prices);
+      prices.append(h3)
+      h3.innerHTML = "Price"
+
+      for (let item of arguments[2]) {
+        sideFilterContent(prices, item)
+      }
+      yield 3;
+
+      let discount = document.createElement('div');
+      SIDEFILTER.append(discount);
+      h3 = document.createElement('h3');
+      discount.append(h3)
+      h3.innerHTML = "Discount"
+      for (let item of arguments[3]) {
+        sideFilterContent(discount, item)
+      }
+    }
+    let sliderDistributer = generateSideFilter(['All Deals', 'Available', 'Upcoming', 'Watchlist'], DEPARTMENTS, ['All',
+      'under $25', '$26 to $50', '$51 to $100', '$100 to $200'
+    ], ['All Deals', '10% off or more', '25% off or more',
+      '50% off or more',
+      '75% off or more'
+    ]);
+    sliderDistributer.next();
+    sliderDistributer.next();
+    sliderDistributer.next();
+    sliderDistributer.next();
+    //aside content generator
+
+    //aside
+    //filtering
+
+    const aside = document.querySelectorAll('aside>div, aside section')
+    //Deals and Department checkbox Filters
+    aside.forEach((item) => {
+      item.onclick = () => {
+        if (event.target.matches('a') || event.target.matches('div'))
+          filterByDeal(event.target.innerHTML)
+
+        if (event.currentTarget.matches('section'))
+          filterByDepartment();
+      };
+    })
+
+    const SELECTED_CATAGORIES = new Set([]);
+
+    //checkbox Filter
+    function filterByDepartment() {
+      let checkPoints = event.currentTarget.querySelectorAll('label input');
+      checkPoints.forEach(box => box.addEventListener('click', checkedBoxes))
+    }
+
+    function checkedBoxes() {
+      if (event.currentTarget.checked) {
+        let currentCatagory = event.currentTarget.parentElement.for;
+        SELECTED_CATAGORIES.add(currentCatagory)
+      }
+
+      if (!event.currentTarget.checked) {
+        let currentCatagory = event.currentTarget.parentElement.for;
+        SELECTED_CATAGORIES.delete(currentCatagory)
+      }
+
+      if (SELECTED_CATAGORIES.size <= 0) {
+        APPENDPRODUCTS();
+        return;
+      }
+
+      const DEPARTMENT_FILTER = PRODUCTS.filter(item => {
+        if (SELECTED_CATAGORIES.has(item.department))
+          return item;
+      })
+      APPENDPRODUCTS(DEPARTMENT_FILTER)
+    }
+
+
+    //checkbox Filter
+    function filterByDeal(current) {
+      document.querySelectorAll('aside div, aside a').forEach(e => e.classList.remove('bold'))
+      event.target.classList.add('bold')
+
+      //filter by deals
+      if (current == 'All Deals' || current == 'All')
+        APPENDPRODUCTS();
+      if (current == 'Available')
+        APPENDPRODUCTS(AVAILABLE_FILTER)
+      if (current == 'Upcoming')
+        APPENDPRODUCTS(UPCOMING_FILTER)
+      if (current == 'Watchlist')
+        APPENDPRODUCTS(WATCHLIST_FILTER)
+      //filter by discount
+      if (event.currentTarget.firstElementChild.innerHTML == 'Discount') {
+        let figure = parseInt(event.target.innerHTML.match(/(\d+)/)[0]);
+        const DISCOUNT_FILTER = PRODUCTS.filter(item => {
+          return item.discount >= figure;
+        })
+        APPENDPRODUCTS(DISCOUNT_FILTER)
+      }
+      //filter by price
+      if (event.currentTarget.firstElementChild.innerHTML == 'Price') {
+        let figure = parseInt(event.target.innerHTML.match(/(\d+)/)[0]);
+
+        if (figure == 25) {
+          const PRICE_FILTER = PRODUCTS.filter(item => {
+            return item.price <= figure;
+          })
+          APPENDPRODUCTS(PRICE_FILTER)
+          return;
+        }
+
+        const PRICE_FILTER = PRODUCTS.filter(item => {
+          return item.price >= figure && item.price <= figure + 50;
+        })
+        APPENDPRODUCTS(PRICE_FILTER);
+      }
+    }
+    //Deals and Department checkbox Filters
+
+
+    //Price,Dicount, low-high sortings
+    const sortingOption = document.querySelector('.sorting select')
+    sortingOption.onclick = () => {
+      let sortBy = sortingOption.value.match(/Price|Discount/g)
+      let lowToHigh = (/Low to High/g).test(sortingOption.value)
+      let SORT; //sorted Array
+
+      if (/Add sortBy/g.test(sortingOption.value)) return;
+
+      if (sortBy && lowToHigh) {
+        sortBy = sortBy[0].toLowerCase()
+        SORT = PRODUCTS.sort((low, high) => {
+          return low[sortBy] - high[sortBy];
+        })
+      } else if (sortBy && !lowToHigh) {
+        sortBy = sortBy[0].toLowerCase()
+        SORT = PRODUCTS.sort((low, high) => {
+          return high[sortBy] - low[sortBy];
+        })
+      } else {
+        SORT = PRODUCTS.sort((low, high) => {
+          return low.id - high.id;
+        })
+      }
+      APPENDPRODUCTS(SORT);
+    }
+    //Price,Dicount, low-high sortings
+
+    //filtering
+
+    //footer
+    const footer = document.querySelector('footer section');
+    console.log(footer)
+
+    const footerData = [
+      'Make Money With Us',
+      'Sell Product On Amazons',
+      'Sell app on amazon',
+      'Becomse an affilite',
+      'Self publish with us',
+      'Host an Amazon Hub',
+      'See more make money with us'
+    ]
+
+    function createFooterDiv() {
+      for (let i = 1; i <= 4; i++) {
+        let div = document.createElement('div');
+        footer.append(div);
+        let h3 = document.createElement('h3');
+        div.append(h3);
+        h3.innerHTML = footerData[0];
+
+        for (let i = 1; i < footerData.length; i++) {
+          let p = document.createElement('p');
+          div.append(p);
+          p.innerHTML = footerData[i];
+        }
+      }
+    }
+    createFooterDiv()
+
+    const footerBtn = document.querySelector('footer>button');
+    footerBtn.onclick = () => {
+      window.scrollTo(pageXOffset, 0)
+    }
+
+    //footer
+  </script>
+</body>
+
+</html>
