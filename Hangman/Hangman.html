@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <script src="https://kit.fontawesome.com/af163de743.js" crossorigin="anonymous"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo|Roboto|Saira|Barlow">
+
+  <style media="screen">
+    body {
+      font-family: 'Roboto';
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1cm;
+      height: 1cm;
+      font-size: 1.2em;
+      margin: 5px;
+      border: 2px solid transparent;
+    }
+
+    .result {
+      width: 80%;
+      height: 70vh;
+      background-image: linear-gradient(#29FFC6, #20E3B2, #0CEBEB);
+      position: absolute;
+      transform: scale(0);
+      flex-direction: column;
+      transition: .5s cubic-bezier(0.8, 0.06, 0.42, 1.12);
+    }
+
+    .result button {
+      background-color: inherit;
+      font-size: 2em;
+    }
+
+    section {
+      width: 80%;
+      height: auto;
+      box-shadow: 10px 10px 10px #f0e932;
+      background-image: linear-gradient(#FFF06F, #FFC107);
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .flex p {
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .showWord p {
+      width: 1cm;
+      height: 1cm;
+      border-bottom: 2px solid black;
+    }
+
+    code {
+      font-size: 1.5em;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="flex result">
+    <h1>YOU LOSE</h1>
+    <button>Play Again</button>
+  </div>
+
+  <section>
+    <h1>HANGMAN</h1>
+    <h3>Use alphabet below to guess the word</h3>
+
+    <div class="flex keys">
+      <p>a</p>
+      <p>b</p>
+      <p>c</p>
+      <p>d</p>
+      <p>e</p>
+      <p>f</p>
+      <p>g</p>
+      <p>h</p>
+      <p>i</p>
+      <p>j</p>
+      <p>k</p>
+      <p>l</p>
+      <p>m</p>
+      <p>n</p>
+      <p>o</p>
+      <p>p</p>
+      <p>q</p>
+      <p>r</p>
+      <p>s</p>
+      <p>t</p>
+      <p>u</p>
+      <p>v</p>
+      <p>w</p>
+      <p>x</p>
+      <p>y</p>
+      <p>z</p>
+    </div>
+
+    <h2>Word Catagory</h2>
+    <h3>To be Determine</h3>
+
+    <div class="flex showWord">
+
+    </div>
+
+    <code>Live Remaining</code>
+
+  </section>
+
+  <script>
+    let wordDiv = document.getElementsByClassName('showWord')
+    const livescounter = document.querySelector('code')
+    const keys = document.querySelectorAll('.keys p');
+    const cata = document.querySelectorAll('h3')
+    let newarray = new Set([]);
+    let entredLetters = new Set([]);
+
+    const getResult = {
+      win: "You Win",
+      lose: "You Lose"
+    }
+
+    function showResult(r) {
+      document.querySelector('.result h1').innerHTML = r;
+      document.querySelector('.result').style.transform = "scale(1)";
+      document.querySelector('.result button').addEventListener('click', () => {
+        location.reload(); //refresh Page
+      })
+    }
+
+    const words = [{
+        catagory: "Bunch of Fruit",
+        guess: "grapes"
+      }, {
+        catagory: "Lives in the sky",
+        guess: "star"
+      },
+      {
+        catagory: "Lives in the sky",
+        guess: "sun"
+      },
+      {
+        catagory: "Korean Artist",
+        guess: "jin"
+      },
+      {
+        catagory: "Korean Artist",
+        guess: "rose"
+      },
+      {
+        catagory: "Country",
+        guess: "korean"
+      }, {
+        catagory: "Fruit",
+        guess: "mango"
+      }, {
+        catagory: "Hard Material",
+        guess: "metal"
+      }, {
+        catagory: "Gender",
+        guess: "boy"
+      }, {
+        catagory: "Animal",
+        guess: "dog"
+      }, {
+        catagory: "Liquid",
+        guess: "juice"
+      }, {
+        catagory: "Feelings",
+        guess: "love"
+      }, {
+        catagory: "Disorder[predict Future]",
+        guess: "anxiety"
+      }
+    ]
+
+
+    let changer = Math.floor(Math.random() * words.length);
+    let lives = 5;
+    let alive = true;
+
+    for (let x of words[changer].guess)
+      createEl();
+
+    let hiddenSlot = document.querySelectorAll('.showWord p')
+
+
+    window.addEventListener('keydown', play);
+    keys.forEach(key => key.onclick = () => play(event.currentTarget))
+    cata[1].innerHTML = words[changer].catagory;
+
+    function play(e) {
+      const target = e.key || e.innerHTML
+      lives < 1 ? alive = false : alive = true;
+
+      if (!alive)
+        return;
+      let enterdKey;
+      keys.forEach(h => {
+        if (h.innerHTML == target)
+          enterdKey = h;
+      })
+      let w = words[changer].guess.split("")
+      for (let x of w) {
+        if (target == x) {
+          enterdKey.style.border = "2px solid green";
+          let index = w.indexOf(x)
+          hiddenSlot[index].innerHTML = x;
+          newarray.add(x);
+          console.table(newarray.values())
+          if (newarray.size == w.length)
+            showResult(getResult.win)
+          return;
+        }
+      }
+
+      if (entredLetters.has(target))
+        return;
+      lives--;
+      livescounter.innerHTML = `Live Remaining: ${lives}`;
+      entredLetters.add(target);
+      if (lives < 1)
+        showResult(getResult.lose)
+    }
+
+
+    function createEl() {
+      let el = document.createElement('p');
+      document.querySelector('.showWord').append(el)
+    }
+  </script>
+</body>
+
+</html>
