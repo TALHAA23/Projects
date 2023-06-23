@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/af163de743.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo|Roboto|Saira|Barlow|Dosis">
+
+    <style media="screen">
+        * {
+            margin: 0;
+            font-family: 'roboto';
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .gameMenu {
+            position: absolute;
+            border-radius: 20px;
+            color: white;
+            width: max(55%, 350px);
+            height: max(70%, 350px);
+            background-color: #000000db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scale: 0;
+            transition: .5s cubic-bezier(0.33, 0.05, 0.16, 1.32);
+            transition-delay: .5s;
+        }
+
+        .gameMenu>* {
+            margin: 5%;
+        }
+
+
+        .navigator {
+            font-size: 5vh;
+            font-weight: bold;
+        }
+
+        section {
+            width: max(50%, 300px);
+            height: max(60%, 300px);
+            border: 1px solid #e5e5e5;
+            /* box-shadow: 7px 7px 2px 2px #d9d1d1; */
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1%;
+        }
+
+        section div {
+            width: calc(98%/3);
+            height: calc(98%/3);
+            border-radius: 20px;
+            border: 1px solid #c3b8b8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 0px;
+            transition: box-shadow .5s linear;
+            font-size: 10vh;
+        }
+
+        button {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            background: 0;
+            width: max(7%, 2cm);
+            height: max(5%, 1cm);
+            font-size: 90%;
+            border-radius: 20px;
+            border: 3px solid #7fb77f;
+            font-weight: bold;
+            /* border-color: #117011; */
+            transition: .5s linear;
+        }
+
+        button:hover {
+            color: white;
+            background: #7fb77f;
+            scale: .9;
+        }
+
+        aside {
+            position: fixed;
+            width: 40%;
+            height: 100vh;
+            background-color: aquamarine;
+            right: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: .5s linear;
+            transition-delay: 1s;
+        }
+
+        aside>* {
+            margin: 15%;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="navigator">Red Turn</p>
+
+    <div class="gameMenu">
+        <i class="fa-solid fa-rotate-right fa-4x" title="keep Playing"></i>
+        <i class="fa-solid fa-plus fa-4x" title="new"></i>
+    </div>
+
+    <section>
+        <div data-set="1"></div>
+        <div data-set="2"></div>
+        <div data-set="3"></div>
+        <div data-set="4"></div>
+        <div data-set="5"></div>
+        <div data-set="6"></div>
+        <div data-set="7"></div>
+        <div data-set="8"></div>
+        <div data-set="9"></div>
+    </section>
+
+    <button>Points</button>
+
+    <aside>
+        <div>
+            <p>RED POINTS</p>
+            <code>0</code>
+        </div>
+        <div>
+            <p>GREEN POINTS</p>
+            <code>0</code>
+        </div>
+    </aside>
+
+    <script>
+        const blocks = document.querySelectorAll('section div');
+        const navigator = document.querySelector('.navigator');
+        const gameMenu = document.querySelector('.gameMenu');
+        const repeat = gameMenu.firstElementChild;
+        const newPlay = gameMenu.lastElementChild;
+        const resultsButton = document.querySelector('button');
+        const results = document.querySelector('aside');
+        const redPointsDisplay = results.querySelector('div:first-child code');
+        const greenPointsDisplay = results.querySelector('div:last-child code');
+
+        let redTurn = true;
+        let blueTurn = false;
+        let isWinnerAnnounce = false;
+        const points = {
+            redPoints: 0,
+            greenPoints: 0
+        }
+
+        let redMoves = [];
+        let blueMoves = [];
+
+        const winMoves = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+            [1, 4, 7],
+            [2, 5, 8],
+            [3, 6, 9],
+            [1, 5, 9],
+            [3, 5, 7]
+        ]
+
+        let myMoves;
+        let emptyBoxesLeft = 9;
+        let winFlages = []
+
+        function trackWinner() {
+
+            if (!isWinnerAnnounce && emptyBoxesLeft == 0) {
+                navigator.innerHTML = 'DRAW';
+                gameMenu.style.scale = 1;
+            }
+
+            myMoves = redTurn ? redMoves : blueMoves
+
+            for (let winMove of winMoves) {
+                myMoves.forEach(move => {
+                    if (winMove.includes(move)) {
+                        winFlages.push(1);
+                    }
+                })
+
+                if (winFlages.length == 3) {
+                    isWinnerAnnounce = true;
+                    gameMenu.style.scale = 1;
+                    redTurn ? points.redPoints++ : points.greenPoints++;
+                    navigator.innerHTML = redTurn ? 'RED WINS' : 'GREEN WINS';
+                    updatePoints();
+                    break
+                }
+
+                winFlages = [];
+            }
+        }
+
+
+        blocks.forEach(block => {
+            block.onclick = function () {
+                markBlock(this)
+            };
+        })
+
+        function markBlock(currentBlock) {
+
+            if (isWinnerAnnounce || currentBlock.getAttribute('name') == 'taken')
+                return;
+
+            emptyBoxesLeft--;
+            currentBlock.setAttribute('name', 'taken');
+
+            if (redTurn) {
+                currentBlock.append(createMarking())
+                colorMarking(currentBlock);
+                trackMove(currentBlock.getAttribute('data-set'));
+            } else {
+                currentBlock.append(createMarking())
+                colorMarking(currentBlock);
+                trackMove(currentBlock.getAttribute('data-set'))
+            }
+
+            trackWinner();
+
+            if (!isWinnerAnnounce)
+                flipTurn();
+
+        }
+
+        function flipTurn() {
+            redTurn = redTurn ? false : true;
+            blueTurn = blueTurn ? false : true;
+            navigator.innerHTML = redTurn ? 'Red Turn' : 'Green Turn';
+        }
+
+        function createMarking() {
+            let markingBlock = document.createElement('i');
+
+            if (redTurn)
+                markingBlock.classList.add('fa-solid', 'fa-xmark')
+            else
+                markingBlock.classList.add('fa-regular', 'fa-circle')
+
+            return markingBlock
+        }
+
+        function colorMarking(block) {
+            if (redTurn) {
+                block.style.background = '#d92727';
+                block.style.boxShadow = '6px 4px 0px 1px #db3030';
+            } else {
+                block.style.background = '#299129';
+                block.style.boxShadow = '6px 4px 0px 1px #397839';
+            }
+        }
+
+        function newGame() {
+            blocks.forEach(block => {
+                gameMenu.style.scale = 0;
+                navigator.innerHTML = 'Red Turn';
+                block.style = '';
+                block.removeAttribute('name');
+                block.innerHTML = '';
+                isWinnerAnnounce = false;
+                redTurn = true;
+                blueTurn = false;
+                redMoves = [];
+                blueMoves = [];
+                myMoves = null;
+                winFlages = [];
+                emptyBoxesLeft = 9;
+
+            })
+        }
+
+        function trackMove(move) {
+            redTurn ? redMoves.push(parseInt(move)) : blueMoves.push(parseInt(move));
+        }
+
+        function updatePoints() {
+
+            results.style.transform = 'scaleX(1)';
+
+            setTimeout(() => {
+                results.style.transform = 'scaleX(0)';
+            }, 3000);
+
+            redPointsDisplay.innerHTML = points.redPoints;
+            greenPointsDisplay.innerHTML = points.greenPoints;
+
+        }
+
+        repeat.onclick = () => newGame();
+        newPlay.onclick = () => {
+            redPointsDisplay.innerHTML = greenPointsDisplay.innerHTML = '0';
+            points.greenPoints = points.redPoints = 0;
+            newGame();
+        }
+
+        resultsButton.onclick = () => {
+            results.style.transform = 'scaleX(1)';
+            setTimeout(() => {
+                results.style.transform = 'scaleX(0)';
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
